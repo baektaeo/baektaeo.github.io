@@ -1,34 +1,36 @@
-# Anima — OAuth 공개 안내 사이트
+# Anima — OAuth 안내 사이트
 
-Google OAuth 프로덕션 앱의 브랜딩에 사용할 수 있는 **정적 안내 사이트**입니다. 실제 Anima 앱이나 개인 데이터를 공개하지 않습니다.
+Google OAuth 동의 화면의 브랜딩 정보 확인을 위한 **정적 안내 사이트**입니다. Anima 앱 본체와 개인 데이터는 이 저장소에 공개하지 않습니다.
 
-## 구성
+## 공개 페이지
 
-- `index.html` — 앱 안내(홈페이지)
-- `privacy.html` — 개인정보처리방침
-- `terms.html` — 이용 안내
-- `style.css` — 반응형 디자인
-- `.nojekyll` — GitHub Pages 정적 파일 처리를 위한 빈 파일
+- 홈페이지: https://baektaeo.github.io/
+- 개인정보처리방침: https://baektaeo.github.io/privacy.html
+- 이용 안내: https://baektaeo.github.io/terms.html
 
-## 새 GitHub 저장소에 게시
+## 파일
 
-현재 계정에 Anima 전용 저장소가 없어 기존 프로젝트에 파일을 추가하지 않았습니다. 다음 순서로 게시할 수 있습니다.
+- `index.html`: 앱 목적과 주요 기능, Google Drive 연동 설명
+- `privacy.html`: Google 사용자 데이터의 수집·이용·저장·공유·삭제 및 외부 API 사용 관련 개인정보처리방침
+- `terms.html`: 개인용 앱 이용 안내
+- `style.css`: 반응형 스타일
+- `.nojekyll`: GitHub Pages 정적 파일 배포
 
-1. https://github.com/new 에서 **`baektaeo.github.io`**라는 이름의 **Public** 저장소를 새로 만듭니다. 이미 이 이름을 사용하고 있다면 다른 이름으로 만들고 아래 주소를 그에 맞게 바꿉니다.
-2. 이 폴더의 파일을 저장소 **최상위(root)**에 업로드합니다. ZIP 파일 자체를 올리는 것이 아니라 압축을 풀어 개별 파일을 올리십시오.
-3. 저장소의 **Settings → Pages → Build and deployment**에서 `Deploy from a branch`, `main`, `/(root)`를 설정합니다.
-4. 배포가 완료되면 `https://baektaeo.github.io/`와 `https://baektaeo.github.io/privacy.html`을 확인합니다.
-5. Google Cloud Console → **Google Auth Platform → Branding**에서:
-    - 홈페이지: `https://baektaeo.github.io/`
-    - 개인정보처리방침: `https://baektaeo.github.io/privacy.html`
-    - 서비스 약관(선택): `https://baektaeo.github.io/terms.html`
-    - 승인된 도메인: `baektaeo.github.io` (Console이 요구하는 경우)
-6. Google이 도메인 소유 확인을 요구하면 Search Console에서 사용자 소유 `baektaeo.github.io` 사이트를 확인하고, 안내되는 HTML 파일 또는 메타 태그를 사이트에 추가합니다. GitHub Pages의 공유 `github.io` 상위 도메인 전체를 소유한 것처럼 등록하지 마십시오. 별도 도메인을 요구받는 경우 소유 도메인을 연결해야 할 수 있습니다.
+## Google Cloud OAuth 설정
 
-## 배포 전 검토
+Google Cloud Console → Google Auth Platform → Branding에서 다음을 입력합니다.
 
-- 문의용 이메일이 **공개 게시**됩니다: `doyeon246437@gmail.com`. 필요하면 전용 지원 이메일로 변경하십시오.
-- 개인정보처리방침은 2026-11-03 시점의 Anima PC·Android 구현을 기준으로 작성되었습니다. 기능 변경 시 갱신해야 합니다.
-- 현재 Google Drive 동기화는 버전별 백업 파일을 남길 수 있고, 연결 해제만으로 백업을 삭제하지 않습니다. 앱 상태에 저장된 AI 제공자 API 키가 백업에 포함되는지 반드시 검토하십시오.
-- 공개 페이지의 게시와 Google OAuth 검증/프로덕션 승인은 별개입니다. Google의 추가 도메인 확인 또는 인증 심사가 필요할 수 있습니다.
-- 이 사이트는 자바스크립트, 외부 추적 도구, 웹폰트 요청을 사용하지 않습니다.
+- 앱 이름: **Anima**
+- 애플리케이션 홈페이지: `https://baektaeo.github.io/`
+- 개인정보처리방침: `https://baektaeo.github.io/privacy.html`
+- 서비스 약관(필요하면): `https://baektaeo.github.io/terms.html`
+
+Google에서 홈페이지의 도메인 소유 확인을 요구하는 경우 [Google Search Console](https://search.google.com/search-console)에서 **URL 접두어** 방식으로 `https://baektaeo.github.io/`를 추가한 후 인증합니다. HTML 메타 태그 또는 HTML 인증 파일을 제공받으면 이 저장소에 추가할 수 있습니다. 소유권 확인 후 Google Cloud 재검증에는 반영 시간이 필요할 수 있습니다.
+
+## 데이터 처리 및 유지보수
+
+- 이 저장소에는 Google OAuth 클라이언트 보안 비밀, 액세스 토큰, 개인 대화 데이터, API 키를 커밋하지 않습니다.
+- Google Drive 동기화는 앱 전용 `drive.appdata` 범위를 사용하고, 백업 데이터는 사용자의 Google Drive에 저장됩니다.
+- 동기화된 백업은 로그아웃만으로 삭제되지 않으며, 버전별 파일이 남을 수 있습니다.
+- 이 사이트의 문의용 이메일 주소는 **공개**됩니다. 지원용 이메일을 변경할 경우 세 HTML 파일의 연락처도 수정해야 합니다.
+- 이 문서는 2026년 11월 현재 확인한 Anima 구현을 기준으로 작성되었으며, 기능 변경 시 개인정보처리방침을 업데이트해야 합니다.
